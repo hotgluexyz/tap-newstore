@@ -1,0 +1,40 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "tap-newstore discover",
+            "type": "debugpy",
+            "request": "launch",
+            "cwd": "${workspaceFolder}/.secrets",
+            "program": "../tap_newstore",
+            "justMyCode": false,
+            "args": [
+                "--config",
+                "config.json",
+                "--discover",
+                ">",
+                "catalog.json",
+            ],
+            "python": "/Users/hassansyyid/Workspace/taps/tap-newstore/.venv/bin/python",
+        }, {
+            "name": "tap-newstore sync",
+            "type": "debugpy",
+            "request": "launch",
+            "cwd": "${workspaceFolder}/.secrets",
+            "program": "../tap_newstore",
+            "justMyCode": false,
+            "args": [
+                "--config",
+                "config.json",
+                "--catalog",
+                "catalog-selected.json",
+                ">",
+                "data.txt"
+            ],
+            "python": "/Users/hassansyyid/Workspace/taps/tap-newstore/.venv/bin/python",
+        },
+    ]
+}
