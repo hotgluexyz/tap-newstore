@@ -111,11 +111,11 @@ class OffsetPaginator(BaseAPIPaginator):
 
 class ProductsStream(NewStoreStream):
     name = "products"
-    path = "/api/v1/shops/{shop_id}/products?locale={locale}"
+    path = "/api/v1/shops/storefront-catalog-en/products?locale=en-us"
     primary_keys = ("product_id",)
     replication_key = None
     records_jsonpath = "$.elements[*]"
-    parent_stream_type = ShopsStream
+    # parent_stream_type = ShopsStream
 
     schema = th.PropertiesList(
         th.Property("product_id", th.StringType),
@@ -159,10 +159,10 @@ class ProductsStream(NewStoreStream):
 
     def get_child_context(self, record: dict, context: dict) -> dict:
         return {
-            "shop_id": context["shop_id"],
-            "locale": context["locale"],
+            # "shop_id": context["shop_id"],
+            # "locale": context["locale"],
             "product_id": record["product_id"],
-            "store_id": context["store_id"],
+            # "store_id": context["store_id"],
         }
 
 
@@ -191,7 +191,7 @@ class AvailabilitiesStream(NewStoreStream):
             "atp_keys": [
                 {
                     "product_id": context["product_id"],
-                    "fulfillment_node_id": context["store_id"],
+                    "fulfillment_node_id": "store1_NYC"
                 }
             ]
         }
